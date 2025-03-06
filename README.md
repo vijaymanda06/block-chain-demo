@@ -23,7 +23,6 @@ az aks create --resource-group myResourceGroup --name myAKSCluster --node-count 
 # Get credentials
 az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
 ```
-Let me help you update the README.md file with all sections. I'll add the remaining content after line 25:
 
 ```markdown:c:\Users\vijay\OneDrive\Desktop\Git Repos\block-chain-demo\README.md
 # Blockchain Demo with Kubernetes Monitoring
