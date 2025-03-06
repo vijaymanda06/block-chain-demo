@@ -24,11 +24,6 @@ az aks create --resource-group myResourceGroup --name myAKSCluster --node-count 
 az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
 ```
 
-```markdown:c:\Users\vijay\OneDrive\Desktop\Git Repos\block-chain-demo\README.md
-# Blockchain Demo with Kubernetes Monitoring
-
-A blockchain demonstration project with Kubernetes deployment and comprehensive monitoring using Prometheus and Grafana.
-
 ## Prerequisites
 
 - Docker Desktop with Kubernetes enabled
