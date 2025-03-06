@@ -9,21 +9,6 @@ A blockchain demonstration project with Kubernetes deployment and comprehensive 
 - Helm
 - kubectl
 
-## Setup Instructions
-
-### 1. Azure AKS Cluster Setup
-
-```bash
-# Create resource group
-az group create --name myResourceGroup --location eastus
-
-# Create AKS cluster
-az aks create --resource-group myResourceGroup --name myAKSCluster --node-count 2 --node-vm-size Standard_B2s --enable-addons monitoring --generate-ssh-keys
-
-# Get credentials
-az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
-```
-
 ## Prerequisites
 
 - Docker Desktop with Kubernetes enabled
