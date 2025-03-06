@@ -1,0 +1,65 @@
+prometheus:
+  enabled: true
+  serverFiles:
+    prometheus.yml:
+      scrape_configs:
+        - job_name: blockchain-demo
+          static_configs:
+            - targets:
+              - blockchain-demo:80
+          metrics_path: /metrics
+          scrape_interval: 15s
+
+grafana:
+  enabled: true
+  adminPassword: your-secure-password
+  datasources:
+    datasources.yaml:
+      apiVersion: 1
+      datasources:
+        - name: Prometheus
+          type: prometheus
+          url: http://monitoring-kube-prometheus-prometheus.monitoring.svc.cluster.local:9090
+          access: proxy
+          isDefault: true
+  dashboardProviders:
+    dashboardproviders.yaml:
+      apiVersion: 1
+      providers:
+        - name: default
+          orgId: 1
+          folder: ''
+          type: file
+          disableDeletion: false
+          editable: true
+          options:
+            path: /var/lib/grafana/dashboards
+  dashboards:
+    default:
+      blockchain-overview:
+        json: |
+          {
+            "title": "Blockchain Demo Overview",
+            "panels": [
+              {
+                "title": "Node CPU Usage",
+                "type": "graph",
+                "datasource": "Prometheus",
+                "targets": [
+                  {
+                    "expr": "rate(container_cpu_usage_seconds_total{pod=~\"blockchain-demo.*\"}[5m])"
+                  }
+                ]
+              },
+              {
+                "title": "Memory Usage",
+                "type": "graph",
+                "datasource": "Prometheus",
+                "targets": [
+                  {
+                    "expr": "container_memory_usage_bytes{pod=~\"blockchain-demo.*\"}"
+                  }
+                ]
+              }
+            ]
+          }
